@@ -13,23 +13,23 @@ Display.tracer(0)
 
 # Two Rackets -- Racket 1 & Racket 2
 
-# Racket 1
-Racket1 = turtle.Turtle()
-Racket1.speed(0)
-Racket1.shape("square")
-Racket1.shapesize(5,1)
-Racket1.color("Black")
-Racket1.penup()
-Racket1.goto(-400,0)
+# Slider1 
+Slider1 = turtle.Turtle()
+Slider1.speed(0)
+Slider1.shape("square")
+Slider1.shapesize(5,1)
+Slider1.color("Black")
+Slider1.penup()
+Slider1.goto(-400,0)
 
-# Racket 2
-Racket2 = turtle.Turtle()
-Racket2.speed(0)
-Racket2.shape("square")
-Racket2.shapesize(5,1)
-Racket2.color("Black")
-Racket2.penup()
-Racket2.goto(400,0)
+# Slider 2
+Slider2 = turtle.Turtle()
+Slider2.speed(0)
+Slider2.shape("square")
+Slider2.shapesize(5,1)
+Slider2.color("Black")
+Slider2.penup()
+Slider2.goto(400,0)
 
 # Ball
 Ball = turtle.Turtle()
@@ -44,31 +44,31 @@ Ball.cy = 0.15
 
 # Racket Movement
 def Racket1_up():
-    y_cordinate = Racket1.ycor()
+    y_cordinate = Slider1.ycor()
     y_cordinate += 10
-    Racket1.sety(y_cordinate)
+    Slider1.sety(y_cordinate)
 
 def Racket1_down():
-    y_cordinate = Racket1.ycor()
+    y_cordinate = Slider1.ycor()
     y_cordinate -= 10
-    Racket1.sety(y_cordinate)
+    Slider1.sety(y_cordinate)
 
-def Racket2_up():
-    y_cordinate = Racket2.ycor()
+def Slider2_up():
+    y_cordinate = Slider2.ycor()
     y_cordinate += 10
-    Racket2.sety(y_cordinate)
+    Slider2.sety(y_cordinate)
 
-def Racket2_down():
-    y_cordinate = Racket2.ycor()
+def Slider2_down():
+    y_cordinate = Slider2.ycor()
     y_cordinate -= 10
-    Racket2.sety(y_cordinate)
+    Slider2.sety(y_cordinate)
 
 # Key Binding 
 Display.listen()
-Display.onkeypress(Racket1_up, "w")
-Display.onkeypress(Racket1_down, "s")
-Display.onkeypress(Racket2_up, "Up")
-Display.onkeypress(Racket2_down, "Down")
+Display.onkeypress(Slider1_up, "w")
+Display.onkeypress(Slider1_down, "s")
+Display.onkeypress(Slider2_up, "Up")
+Display.onkeypress(Slider2_down, "Down")
 
 # Score
 PlayerA_Score = 0
@@ -117,10 +117,10 @@ while True:
         Write.write("Player 1: {}    Player 2: {}".format(PlayerA_Score,PlayerB_Score), PlayerB_Score, align = "center", font = ("Helvetica",15,"normal"))
 
 # Ball and Racket Collision 
-    if (Ball.xcor() > 390 and Ball.xcor() < 400) and (Ball.ycor() < Racket2.ycor() + 40 and Ball.ycor() > Racket2.ycor() - 40):
+    if (Ball.xcor() > 390 and Ball.xcor() < 400) and (Ball.ycor() < Slider2.ycor() + 40 and Ball.ycor() > Slider2.ycor() - 40):
         Ball.setx(390)
         Ball.cx *= -1
 
-    if (Ball.xcor() < -390 and Ball.xcor() > -400) and (Ball.ycor() < Racket1.ycor() + 40 and Ball.ycor() > Racket1.ycor() - 40):
+    if (Ball.xcor() < -390 and Ball.xcor() > -400) and (Ball.ycor() < Slider1.ycor() + 40 and Ball.ycor() > Slider1.ycor() - 40):
         Ball.setx(-390)
         Ball.cx *= -1
